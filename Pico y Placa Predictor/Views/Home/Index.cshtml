@@ -2,41 +2,30 @@
     ViewBag.Title = "Home Page";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Pico y Placa Predictor</title>
-    <style>
-        /* Estilos adicionales si es necesario */
-    </style>
-</head>
-<body>
-    <main>
-        <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="title">Pico y Placa Predictor</h1>
-            <p class="lead">Discover if your vehicle can be on the road during "Pico y Placa" hours!</p>
-            <p>Enter your license plate number, date, and time in the form below to find out if your car is allowed to be on the road.</p>
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <h1 id="title">Pico y Placa Predictor</h1>
+        <p class="lead">Discover if your vehicle can be on the road during "Pico y Placa" hours!</p>
+        <p>Enter your license plate number, date, and time in the form below to find out if your car is allowed to be on the road.</p>
+    </section>
 
-            <form action="/Prediction" method="post">
-                <div class="form-group">
-                    <label for="licensePlate">License Plate:</label>
-                    <input type="text" id="licensePlate" name="licensePlate" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="date">Date:</label>
-                    <input type="date" id="date" name="date" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="time">Time:</label>
-                    <input type="time" id="time" name="time" required>
-                </div>
-
-                <button type="submit">Check</button>
-            </form>
-        </section>
-    </main>
-</body>
-</html>
+    <section class="row" aria-labelledby="form">
+        <h2 id="predictor">Pico y Placa Predictor</h2>
+        @using (Html.BeginForm("CheckPicoPlaca", "Home", FormMethod.Post))
+        {
+        <div class="form-group">
+            @Html.Label("License Plate Number:")
+            @Html.TextBox("plate", null, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Date:")
+            @Html.TextBox("date", null, new { @class = "form-control", @type = "date" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Time:")
+            @Html.TextBox("time", null, new { @class = "form-control", @type = "time" })
+        </div>
+        <button type="submit" class="btn btn-primary">Verify</button>
+        }
+    </section>
+</main>
