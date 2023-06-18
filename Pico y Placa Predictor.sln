@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pico y Placa Predictor", "Pico y Placa Predictor\Pico y Placa Predictor.csproj", "{062AC75F-9E68-4E53-AFDA-223992F92587}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pico y Placa Predictor.Tests", "Pico y Placa Predictor.Tests\Pico y Placa Predictor.Tests.csproj", "{26AE1B07-E304-4771-B986-57393F8378E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{062AC75F-9E68-4E53-AFDA-223992F92587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{062AC75F-9E68-4E53-AFDA-223992F92587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{062AC75F-9E68-4E53-AFDA-223992F92587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{062AC75F-9E68-4E53-AFDA-223992F92587}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26AE1B07-E304-4771-B986-57393F8378E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26AE1B07-E304-4771-B986-57393F8378E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26AE1B07-E304-4771-B986-57393F8378E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26AE1B07-E304-4771-B986-57393F8378E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {579FC066-5739-41F3-9266-3D11E50263E9}
+	EndGlobalSection
+EndGlobal
