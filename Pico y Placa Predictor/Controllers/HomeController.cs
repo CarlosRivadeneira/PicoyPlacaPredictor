@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Pico_y_Placa_Predictor.Models;
 
 namespace Pico_y_Placa_Predictor.Controllers
 {
@@ -11,6 +13,12 @@ namespace Pico_y_Placa_Predictor.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConfPicoyPlaca(string plate, string dateStr, TimeSpan time)
+        {
+            
         }
 
         public ActionResult About()

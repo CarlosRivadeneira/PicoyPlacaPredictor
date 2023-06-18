@@ -5,13 +5,23 @@ namespace Pico_y_Placa_Predictor.Models
     public class PicoyPlacaPredictor
     {
         // Función que maneja la confirmación de la disponibilidad de que circule el vehículo
-        public bool ConfPicoyPlaca(string plate, DateTime date, TimeSpan time)
+        public bool ConfPicoyPlaca(string plate, string date, TimeSpan time)
         {
             // Obtiene el último dígito de la placa
             int ultDig = int.Parse(plate.Substring(plate.Length - 1));
 
-            // Obtiene el nombre del día de la semana
-            DayOfWeek dayOfWeek = date.DayOfWeek;
+            // Variable que almacena la fecha convertida
+            DateTime dateParsed;
+
+            // Convierte la fecha String en un DateTime en TryParse y verifica si la fecha se encuentra en el formato correcto
+            // sino da el error ArgumentException
+            if (!DateTime.TryParse(date, out dateParsed))
+            {
+                throw new ArgumentException("Incorrect time format");
+            }
+
+            // Obtiene el nombre del día de la semana de la fecha convertida
+            DayOfWeek dayOfWeek = dateParsed.DayOfWeek;
             
             // Variable que almacena la disponibilidad de circulación del vehículo según el día
             bool confPicoyPlacaDay = false;
