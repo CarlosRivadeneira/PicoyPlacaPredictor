@@ -16,9 +16,14 @@ namespace Pico_y_Placa_Predictor.Controllers
         }
 
         [HttpPost]
-        public ActionResult ConfPicoyPlaca(string plate, string dateStr, TimeSpan time)
+        public ActionResult ConfPicoyPlaca(string plate, string date, TimeSpan time)
         {
-            
+            PicoyPlacaPredictor predictor = new PicoyPlacaPredictor();
+            bool disponibility = predictor.ConfPicoyPlaca(plate, date, time);
+
+            ViewBag.disponibility = disponibility;
+
+            return View("message");
         }
 
         public ActionResult About()
