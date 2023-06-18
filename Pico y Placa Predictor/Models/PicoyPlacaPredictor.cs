@@ -7,13 +7,19 @@ namespace Pico_y_Placa_Predictor.Models
 {
     public class PicoyPlacaPredictor
     {
+        // Función que maneja la confirmación de la disponibilidad de que circule el vehículo
         public bool ConfPicoyPlaca(string plate, DateTime date, TimeSpan time)
         {
+            // Obtiene el último dígito de la placa
             int ultDig = int.Parse(plate.Substring(plate.Length - 1));
 
+            // Obtiene el nombre del día de la semana
             DayOfWeek dayOfWeek = date.DayOfWeek;
+            
+            // Variable que almacena la disponibilidad de circulación del vehículo según el día
             bool confPicoyPlacaDay = false;
 
+            // Condiciones que verifican el día de la semana y el último dígito de la placa con DayOfWeek
             switch (dayOfWeek) 
             {
                 case DayOfWeek.Monday:
@@ -48,14 +54,20 @@ namespace Pico_y_Placa_Predictor.Models
                     break;
             }
 
+            // Lapsos de tiempo en los que se aplica Pico y Placa
             TimeSpan startTimeAM = new TimeSpan(7, 0, 0);
             TimeSpan endTimeAM = new TimeSpan(9, 30, 0);
             TimeSpan startTimePM = new TimeSpan(16, 0, 0);
             TimeSpan endTimePM = new TimeSpan(19, 30, 0);
 
-            bool confPicoyPlacaTime = (time >= startTimeAM && time <= endTimeAM) ||
-                                    (time >= startTimePM && time <= endTimePM);
+            // Variable que almacena la disponibilidad de circulación del vehículo según la hora
+            bool confPicoyPlacaTime;
+            if ((time >= startTimeAM && time <= endTimeAM) || (time >= startTimePM && time <= endTimePM))
+            {
+                confPicoyPlacaTime = true;
+            }
 
+            // Retorna el resultado de la condición del día y hora (True o False)
             return confPicoyPlacaDay && confPicoyPlacaTime;
         }
     }
