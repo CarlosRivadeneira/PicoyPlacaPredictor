@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Pico_y_Placa_Predictor.Models
 {
@@ -61,7 +58,9 @@ namespace Pico_y_Placa_Predictor.Models
             TimeSpan endTimePM = new TimeSpan(19, 30, 0);
 
             // Variable que almacena la disponibilidad de circulación del vehículo según la hora
-            bool confPicoyPlacaTime;
+            bool confPicoyPlacaTime = false;
+            
+            // Condición que verifica que el time seleccionado se encuentre dentro de los lapsos de tiempo
             if ((time >= startTimeAM && time <= endTimeAM) || (time >= startTimePM && time <= endTimePM))
             {
                 confPicoyPlacaTime = true;
