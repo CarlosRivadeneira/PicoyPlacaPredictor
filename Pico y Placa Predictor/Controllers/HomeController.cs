@@ -14,7 +14,7 @@ namespace Pico_y_Placa_Predictor.Controllers
         [HttpPost]
         public ActionResult ConfPicoyPlaca(string plate, string date, TimeSpan time)
         {
-
+            // Variables que almacenan los inputs de los usuarios para mostrar en Result.cshtml
             ViewBag.plate = plate;
             ViewBag.Date = date;
             ViewBag.Time = time.ToString(@"hh\:mm");
@@ -28,6 +28,7 @@ namespace Pico_y_Placa_Predictor.Controllers
             // Pasa el resultado a la vista Result
             ViewBag.CanDrive = canDrive;
 
+            // Renderiza la Vista Result.cshtml
             return View("Result");
         }
     }
