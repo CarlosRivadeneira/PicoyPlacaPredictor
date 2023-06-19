@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Pico_y_Placa_Predictor.Models;
 
@@ -18,26 +14,21 @@ namespace Pico_y_Placa_Predictor.Controllers
         [HttpPost]
         public ActionResult ConfPicoyPlaca(string plate, string date, TimeSpan time)
         {
-            PicoyPlacaPredictor predictor = new PicoyPlacaPredictor();
-            bool disponibility = predictor.ConfPicoyPlaca(plate, date, time);
 
-            ViewBag.disponibility = disponibility;
+            ViewBag.plate = plate;
+            ViewBag.Date = date;
+            ViewBag.Time = time.ToString(@"hh\:mm");
 
-            return View("message");
-        }
+            // Crea una instancia de la clase PicoyPlacaPredictor
+            var predictor = new PicoyPlacaPredictor();
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            // Llama al método ConfPicoyPlaca para verificar la disponibilidad
+            bool canDrive = predictor.ConfPicoyPlaca(plate, date, time);
 
-            return View();
-        }
+            // Pasa el resultado a la vista Result
+            ViewBag.CanDrive = canDrive;
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View("Result");
         }
     }
 }

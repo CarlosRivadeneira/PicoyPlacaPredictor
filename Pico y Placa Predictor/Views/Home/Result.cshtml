@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Result";
+}
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <h1 id="title">Pico y Placa Predictor</h1>
+    </section>
+
+    <section class="row" aria-labelledby="resultTitle">
+        <h2 id="resultTitle">Result</h2>
+        <div>
+            @if (ViewBag.CanDrive)
+            {
+                <p class="result">Your vehicle with plate: <span class="user-input">@ViewBag.Plate</span> is not allowed to be on the road during <span class="user-input">@ViewBag.Date</span> at <span class="user-input">@ViewBag.Time</span>.</p>
+            }
+            else
+            {
+                <p class="result">Your vehicle with plate: <span class="user-input">@ViewBag.Plate</span> is allowed to be on the road during <span class="user-input">@ViewBag.Date</span> at <span class="user-input">@ViewBag.Time</span>.</p>
+            }
+        </div>
+    </section>
+</main>
