@@ -1,54 +1,74 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Pico_y_Placa_Predictor;
-using Pico_y_Placa_Predictor.Controllers;
+using Pico_y_Placa_Predictor.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
 
-namespace Pico_y_Placa_Predictor.Tests.Controllers
+namespace Pico_y_Placa_Predictor.Tests
 {
     [TestClass]
-    public class HomeControllerTest
+    public class PicoyPlacaPredictorTest
     {
         [TestMethod]
-        public void Index()
+        public void CanNotDrive()
         {
-            // Arrange
-            HomeController controller = new HomeController();
+            PicoyPlacaPredictor predictor = new PicoyPlacaPredictor();
+            string plate = "PBC-1230";
+            string date = "2023-06-16";
+            TimeSpan time = new TimeSpan(8, 30, 0);
 
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
+            bool result = predictor.ConfPicoyPlaca(plate, date, time);
 
-            // Assert
-            Assert.IsNotNull(result);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
-        public void About()
+        public void CanDrive()
         {
-            // Arrange
-            HomeController controller = new HomeController();
+            PicoyPlacaPredictor predictor = new PicoyPlacaPredictor();
+            string plate = "GAB-5678";
+            string date = "2023-06-17";
+            TimeSpan time = new TimeSpan(16, 30, 0);
 
-            // Act
-            ViewResult result = controller.About() as ViewResult;
+            bool result = predictor.ConfPicoyPlaca(plate, date, time);
 
-            // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
-        public void Contact()
+        public void InvalidPlateFalse()
         {
-            // Arrange
-            HomeController controller = new HomeController();
+            PicoyPlacaPredictor predictor = new PicoyPlacaPredictor();
+            string plate = "C-5678";
+            string date = "2023-06-17";
+            TimeSpan time = new TimeSpan(16, 30, 0);
 
-            // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            bool result = predictor.ConfPicoyPlaca(plate, date, time);
 
-            // Assert
-            Assert.IsNotNull(result);
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void InvalidPlateTrue()
+        {
+            PicoyPlacaPredictor predictor = new PicoyPlacaPredictor();
+            string plate = "C-5678";
+            string date = "2023-06-17";
+            TimeSpan time = new TimeSpan(16, 30, 0);
+
+            bool result = predictor.ConfPicoyPlaca(plate, date, time);
+
+            Assert.IsTrue(result);
+        }
+
+        public void WeekendsDate()
+        {
+            PicoyPlacaPredictor predictor = new PicoyPlacaPredictor();
+            string plate = "C-5678";
+            string date = "2023-06-18";
+            TimeSpan time = new TimeSpan(8, 30, 0);
+
+            bool result = predictor.ConfPicoyPlaca(plate, date, time);
+
+            Assert.IsTrue(result);
         }
     }
 }

@@ -4,11 +4,17 @@ namespace Pico_y_Placa_Predictor.Models
 {
     public class PicoyPlacaPredictor
     {
+        private const int PlateLength = 8;
         // Función que maneja la confirmación de la disponibilidad de que circule el vehículo
         public bool ConfPicoyPlaca(string plate, string date, TimeSpan time)
         {
             // Obtiene el último dígito de la placa
             int ultDig = int.Parse(plate.Substring(plate.Length - 1));
+
+            if (plate.Length != PlateLength)
+            {
+                throw new ArgumentException("Invalid license plate length");
+            }
 
             // Variable que almacena la fecha convertida
             DateTime dateParsed;
